@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Typography, Button, ButtonGroup } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import { useDispatch } from 'react-redux';
+import { handleLoginAction } from '../../redux/auth';
 
 const useStyles = makeStyles((theme) => ({
   constainer: {
@@ -19,12 +21,19 @@ const useStyles = makeStyles((theme) => ({
   backButton: {
     textTransform: 'none',
     fontSize: 18,
-    width: '200px'
+    width: '200px',
+    marginBottom: 20
   }
 }));
 
 const HomeScreen = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const handleLogin = useCallback(
+    (token = 'access_token') => dispatch(handleLoginAction(token)),
+    [dispatch]
+  );
 
   return (
     <Grid container className={classes.constainer}>
@@ -36,16 +45,6 @@ const HomeScreen = () => {
             <Grid item>
               <ButtonGroup size="large" aria-label="Small outlined button group">
                 <Button
-                  variant='outlined'
-                  color='primary'
-                  component={Link}
-                  to='/private'
-                  size='medium'
-                  className={classes.backButton}
-                >
-                  Go to Private
-              </Button>
-                <Button
                   variant='contained'
                   color='secondary'
                   component={Link}
@@ -55,23 +54,18 @@ const HomeScreen = () => {
                 >
                   Go to Public
               </Button>
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  size='medium'
+                  onClick={() => handleLogin()}
+                  className={classes.backButton}
+                >
+                  Log Me In
+            </Button>
               </ButtonGroup>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid item xs={12}>
-        <Grid container spacing={1} direction="column" alignItems="center">
-          <Grid item>
-            <Button
-              variant='contained'
-              color='secondary'
-              size='medium'
-              className={classes.backButton}
-            >
-              Make Me Authenticated
-            </Button>
-          </Grid>
-        </Grid>
         </Grid>
       </Grid>
     </Grid>

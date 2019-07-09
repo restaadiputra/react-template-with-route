@@ -1,14 +1,16 @@
 // * CONSTANTS
-const LOGIN_SUCCESS = 'app/login/LOGIN_SUCCESS';
+const LOGIN = 'app/login/LOGIN';
 const LOGOUT = 'app/login/LOGOUT';
 const ACCESS_TOKEN = 'access_token';
 
 // * INITIAL STATE
 export const auth = {
   get isAuthenticated () {
-    return false;
+    return (
+      this.accessToken !== ''
+    );
   },
-  set accessToken (token = '') {
+  set accessToken (token) {
     this.storage().setItem(ACCESS_TOKEN, token);
   },
   get accessToken () {
@@ -18,15 +20,17 @@ export const auth = {
     return window.sessionStorage;
   },
   clearStorage () {
+    console.log(this.storage())
     this.storage().setItem(ACCESS_TOKEN, '');
   }
 };
 
 // * REDUCERS
-export default (state = auth, action) => {
-  switch (action.type) {
-    case LOGIN_SUCCESS: {
-      state.accessToken = action.accessToken
+export default (state = auth, { type, payload }) => {
+  switch (type) {
+    case LOGIN: {
+      console.log('called reducers')
+      state.accessToken = payload
       break;
     }
     case LOGOUT: {
@@ -38,4 +42,15 @@ export default (state = auth, action) => {
   }
 
   return state;
-}
+};
+
+
+// * ACTIONS
+export const handleLoginAction = (accessToken = 'access_token') => ({
+  type: LOGIN,
+  payload: accessToken
+});
+
+export const handleLogoutAction = () => ({
+  type: LOGOUT
+})

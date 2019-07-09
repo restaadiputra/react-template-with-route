@@ -1,7 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback } from 'react';
 import { Grid, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import { useDispatch } from 'react-redux';
+import { handleLogoutAction } from '../../redux/auth';
 
 const useStyles = makeStyles((theme) => ({
   constainer: {
@@ -18,12 +19,20 @@ const useStyles = makeStyles((theme) => ({
   },
   backButton: {
     textTransform: 'none',
-    fontSize: 18
+    fontSize: 18,
+    width: '200px',
+    marginBottom: 20
   }
 }));
 
 const PrivateScreen = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const handleLogout = useCallback(
+    () => dispatch(handleLogoutAction()),
+    [dispatch]
+  );
 
   return (
     <Grid container className={classes.constainer}>
@@ -32,12 +41,11 @@ const PrivateScreen = () => {
       <Button
         variant='contained'
         color='secondary'
-        component={Link}
-        to='/'
         size='medium'
+        onClick={() => handleLogout()}
         className={classes.backButton}
       >
-        Back to Home
+        Logout Me!
       </Button>
     </Grid>
   )
