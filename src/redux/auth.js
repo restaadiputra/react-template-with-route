@@ -7,7 +7,7 @@ const ACCESS_TOKEN = 'access_token';
 export const auth = {
   get isAuthenticated () {
     return (
-      this.accessToken !== ''
+      this.accessToken !== '' && this.accessToken !== null
     );
   },
   set accessToken (token) {
@@ -20,7 +20,6 @@ export const auth = {
     return window.sessionStorage;
   },
   clearStorage () {
-    console.log(this.storage())
     this.storage().setItem(ACCESS_TOKEN, '');
   }
 };
@@ -29,7 +28,6 @@ export const auth = {
 export default (state = auth, { type, payload }) => {
   switch (type) {
     case LOGIN: {
-      console.log('called reducers')
       state.accessToken = payload
       break;
     }
