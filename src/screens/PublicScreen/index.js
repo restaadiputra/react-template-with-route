@@ -4,7 +4,7 @@ import { Grid, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
-  constainer: {
+  container: {
     height: '100vh',
     display: 'flex',
     flexDirection: 'column',
@@ -26,7 +26,7 @@ const PublicScreen = () => {
   const classes = useStyles();
 
   return (
-    <Grid container className={classes.constainer}>
+    <Grid container className={classes.container}>
       <Typography variant='h1'>This is Public Screen</Typography>
       <Typography variant='h5' className={classes.textRow}>Go to home again using button bellow!</Typography>
       <Button

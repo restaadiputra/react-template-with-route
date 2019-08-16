@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import routes from '../../configs/routes';
 import AppRoute from './AppRoute';
 
-const PrivateRoute = ({ ...props }) => {
+const PublicRoute = ({ ...props }) => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
 
   if (isAuthenticated) {
@@ -14,4 +14,4 @@ const PrivateRoute = ({ ...props }) => {
   return <AppRoute {...props} />
 };
 
-export default PrivateRoute;
+export default PublicRoute;

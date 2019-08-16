@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { handleLogoutAction } from '../../redux/auth';
 
 const useStyles = makeStyles((theme) => ({
-  constainer: {
+  container: {
     height: '100vh',
     display: 'flex',
     flexDirection: 'column',
@@ -35,7 +35,7 @@ const PrivateScreen = () => {
   );
 
   return (
-    <Grid container className={classes.constainer}>
+    <Grid container className={classes.container}>
       <Typography variant='h1'>This is Private Screen</Typography>
       <Typography variant='h5' className={classes.textRow}>Go to home again using button bellow!</Typography>
       <Button

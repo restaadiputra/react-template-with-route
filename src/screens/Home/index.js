@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { handleLoginAction } from '../../redux/auth';
 
 const useStyles = makeStyles((theme) => ({
-  constainer: {
+  container: {
     height: '100vh',
     display: 'flex',
     flexDirection: 'column',
@@ -36,7 +36,7 @@ const HomeScreen = () => {
   );
 
   return (
-    <Grid container className={classes.constainer}>
+    <Grid container className={classes.container}>
       <Typography variant='h1'>This is Home Screen</Typography>
       <Typography variant='h5' className={classes.textRow}>Go to private or public address using button bellow!</Typography>
       <Grid container spacing={3}>
