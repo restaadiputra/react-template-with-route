@@ -8,43 +8,16 @@ import PrivateRoute from './PrivateRoute';
 import AppRoute from './AppRoute';
 
 function RouteRender() {
-  const renderPublicRoute = () =>
-    map(publicRoute, ({ path, title, component }) => (
-      <PublicRoute
-        key={path}
-        exact
-        path={path}
-        component={component}
-        title={title}
-      />
-    ));
-
-  const renderPrivateRoute = () =>
-    map(privateRoute, ({ path, title, component }) => (
-      <PrivateRoute
-        key={path}
-        exact
-        path={path}
-        component={component}
-        title={title}
-      />
-    ));
-
-  const renderOtherRoute = () =>
-    map(otherRoute, ({ path, title, component }) => (
-      <AppRoute 
-        key={path} 
-        path={path} 
-        component={component} 
-        title={title} 
-      />
-    ));
+  const renderRouteComponent = (routeList, Component = AppRoute) =>
+    map(routeList, (routeOptions, index) => (
+      <Component key={index} {...routeOptions} />
+    ))
 
   return (
     <Switch>
-      {renderPrivateRoute()}
-      {renderPublicRoute()}
-      {renderOtherRoute()}
+      {renderRouteComponent(publicRoute, PublicRoute)}
+      {renderRouteComponent(privateRoute, PrivateRoute)}
+      {renderRouteComponent(otherRoute)}
     </Switch>
   );
 }
