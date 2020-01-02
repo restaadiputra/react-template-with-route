@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NotFound = () => {
+  console.log('test')
   const classes = useStyles();
 
   return (

@@ -6,7 +6,7 @@ import NotFound from '../screens/Other/NotFound';
 export const privateRoute = {
   private: {
     title: 'Private Page',
-    url: '/private',
+    path: '/private',
     component: PrivateScreen
   }
 };
@@ -14,12 +14,12 @@ export const privateRoute = {
 export const publicRoute = {
   public: {
     title: 'Public Page',
-    url: '/public',
+    path: '/public',
     component: PublicScreen
   },
   home: {
     title: 'Home',
-    url: '/',
+    path: '/',
     component: Home
   }
 };
@@ -27,7 +27,7 @@ export const publicRoute = {
 export const otherRoute = {
   notFound: {
     title: '404 Not Found',
-    url: '/*',
+    path: '/*',
     component: NotFound
   }
 };

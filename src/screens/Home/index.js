@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 50
   },
   textRow: {
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2)
   },
   backButton: {
     textTransform: 'none',
@@ -53,7 +53,17 @@ const HomeScreen = () => {
                   className={classes.backButton}
                 >
                   Go to Public
-              </Button>
+                </Button>
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  component={Link}
+                  to='/not-found'
+                  size='medium'
+                  className={classes.backButton}
+                >
+                  Go to Not Found
+                </Button>
                 <Button
                   variant='contained'
                   color='secondary'
